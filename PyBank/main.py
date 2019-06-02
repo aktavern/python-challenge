@@ -15,7 +15,7 @@ with open('budget_data.csv','r') as file:
     print(f'Total: ${net_total_sum}')
 
     # calculate average of changes in profit/losses over entire period
-
+       
     # calculate greatest increase in profits (date and amount) over entire period
     
     # greatest decrease in losses (date and amount) over entire period 
