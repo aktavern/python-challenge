@@ -51,6 +51,7 @@ with open ("election_data.csv","r") as election_file:
         }
     }
 
+    #print results
     print("Election Results")
     print("-------------------------")
     print(f'Total Votes: {election_dict["total votes"]}')
@@ -61,7 +62,7 @@ with open ("election_data.csv","r") as election_file:
     print(f'{election_dict["fourth_candidate"]["name"]}: {election_dict["fourth_candidate"]["percentage"]}% ({election_dict["fourth_candidate"]["total"]})')
     print("-------------------------")
     
-    #TODO: find winner of election based on popular vote 
+    #find winner of election based on popular vote 
     if candidate_votes0 > candidate_votes1 or candidate_votes0 > candidate_votes2 or candidate_votes0 > candidate_votes3:
         print(f'Winner: {candidates[0]}')
     elif candidate_votes1 > candidate_votes0 or candidate_votes1 > candidate_votes2 or candidate_votes1 > candidate_votes3:
