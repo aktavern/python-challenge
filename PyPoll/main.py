@@ -1,8 +1,6 @@
 import csv
-import os
 
 #bring in csv file
-print("Loading...")
 with open ("election_data.csv","r") as election_file:
     election_data = csv.reader(election_file,delimiter = ',')
     
@@ -64,6 +62,16 @@ with open ("election_data.csv","r") as election_file:
     print("-------------------------")
     
     #TODO: find winner of election based on popular vote 
+    if candidate_votes0 > candidate_votes1 or candidate_votes0 > candidate_votes2 or candidate_votes0 > candidate_votes3:
+        print(f'Winner: {candidates[0]}')
+    elif candidate_votes1 > candidate_votes0 or candidate_votes1 > candidate_votes2 or candidate_votes1 > candidate_votes3:
+        print(f'Winner: {candidates[1]}')
+    elif candidate_votes2 > candidate_votes0 or candidate_votes2 > candidate_votes1 or candidate_votes2 > candidate_votes3:
+        print(f'Winner: {candidates[2]}')
+    else:
+        print(f'Winner: {candidates[3]}')
     
+    print("-------------------------")
+
 
 
