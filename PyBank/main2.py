@@ -16,16 +16,14 @@ net_total = budget_file["Profit/Losses"].sum()
 print(f'Total: {net_total}')
 
 # calculate average of changes in profit/losses over entire period
-difference = budget_file["Profit/Losses"].shift(1)
-initial = budget_file["Profit/Losses"]
-average = (initial - difference).mean()
+difference = budget_file.shift(1)
+average = (budget_file["Profit/Losses"] - difference["Profit/Losses"]).mean()
 print(f'Average Change: ${average}')
 
-# calculate greatest increase in profits (date and amount) over entire period
-increase = (initial - difference).max()
-print(increase)
-print(budget_file.loc[df["Profit/Losses"]])
+# TODO calculate greatest increase in profits (date and amount) over entire period
+increase = (budget_file["Profit/Losses"] - difference["Profit/Losses"]).max()
 
-# greatest decrease in losses (date and amount) over entire period 
-decrease = (initial - difference).min()
+print(increase)
+# TODO greatest decrease in losses (date and amount) over entire period 
+decrease = (difference["Profit/Losses"] - budget_file["Profit/Losses"]).max()
 print(decrease)
