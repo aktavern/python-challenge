@@ -1,6 +1,7 @@
 import csv
 
 #bring in csv file
+print("Loading results...\n")
 with open ("election_data.csv","r") as election_file:
     election_data = csv.reader(election_file,delimiter = ',')
     
@@ -64,15 +65,26 @@ with open ("election_data.csv","r") as election_file:
     
     #find winner of election based on popular vote 
     if candidate_votes0 > candidate_votes1 or candidate_votes0 > candidate_votes2 or candidate_votes0 > candidate_votes3:
-        print(f'Winner: {candidates[0]}')
+        winner = candidates[0]
+        print(f'Winner: {winner}')
     elif candidate_votes1 > candidate_votes0 or candidate_votes1 > candidate_votes2 or candidate_votes1 > candidate_votes3:
-        print(f'Winner: {candidates[1]}')
+        winner = candidates[1]
+        print(f'Winner: {winner}')
     elif candidate_votes2 > candidate_votes0 or candidate_votes2 > candidate_votes1 or candidate_votes2 > candidate_votes3:
-        print(f'Winner: {candidates[2]}')
+        winner = candidates[2]
+        print(f'Winner: {winner}')
     else:
-        print(f'Winner: {candidates[3]}')
-    
+        winner = candidates[3]
+        print(f'Winner: {winner}')
     print("-------------------------")
-
-
-
+    print("File 'votingresults.txt' has been exported.")
+    
+    #export to text file
+    with open("votingresults.txt","w") as voting_results:
+        voting_results.write("Election Results\n-------------------------")
+        voting_results.write(f'\nTotal Votes: {election_dict["total votes"]}\n-------------------------')
+        voting_results.write(f'\n{election_dict["first_candidate"]["name"]}: {election_dict["first_candidate"]["percentage"]}% ({election_dict["first_candidate"]["total"]})')
+        voting_results.write(f'\n{election_dict["second_candidate"]["name"]}: {election_dict["second_candidate"]["percentage"]}% ({election_dict["second_candidate"]["total"]})')
+        voting_results.write(f'\n{election_dict["third_candidate"]["name"]}: {election_dict["third_candidate"]["percentage"]}% ({election_dict["third_candidate"]["total"]})')
+        voting_results.write(f'\n{election_dict["fourth_candidate"]["name"]}: {election_dict["fourth_candidate"]["percentage"]}% ({election_dict["fourth_candidate"]["total"]})\n-------------------------')
+        voting_results.write(f'\nWinner: {winner}\n-------------------------')
