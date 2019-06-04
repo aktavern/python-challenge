@@ -13,12 +13,12 @@ with open('budget_data.csv','r') as file:
     net_total = [int(row[1]) for row in budget_data]
     net_total_sum = sum(net_total)
 
-    # calculate average of changes in profit/losses over entire period
+    # get differences in profit/losses over time
     average_change = []
     for first, second in zip(budget_data,budget_data[1:]):
         average_change.append(int(second[1]) - int(first[1]))
     
-    # merge average of changes with dates
+    # merge changes in profit/losses with dates
     date = []
     for row in budget_data[1:]:
         date.append(row[0])
@@ -36,10 +36,20 @@ with open('budget_data.csv','r') as file:
             decrease_date = row[0]
             greatest_decrease = row[1]
     
-
+    #print output to terminal
     print("Financial Analysis \n----------------------------")
-    print (f'Total Months: {months}')
+    print(f'Total Months: {months}')
     print(f'Total: ${net_total_sum}')
-    print (f'Average Change: ${round(sum(average_change)/len(average_change),2)}')
+    # calculate average of changes in profit/losses over entire period
+    print(f'Average Change: ${round(sum(average_change)/len(average_change),2)}')
     print(f'Greatest Increase in Profits: {increase_date} (${greatest_increase})')
     print(f'Greatest Decrease in Profits: {decrease_date} (${greatest_decrease})')
+    print("File 'results.txt' has been exported.")
+    
+    #export to text file
+    with open("results.txt",'w') as result_file:
+        result_file.write("Financial Analysis \n----------------------------")
+        result_file.write(f'\nTotal: ${net_total_sum}')
+        result_file.write(f'\nAverage Change: ${round(sum(average_change)/len(average_change),2)}')
+        result_file.write(f'\nGreatest Increase in Profits: {increase_date} (${greatest_increase})')
+        result_file.write(f'\nGreatest Decrease in Profits: {decrease_date} (${greatest_decrease})')
