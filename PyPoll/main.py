@@ -64,13 +64,13 @@ with open ("election_data.csv","r") as election_file:
     print("-------------------------")
     
     #find winner of election based on popular vote 
-    if candidate_votes0 > candidate_votes1 or candidate_votes0 > candidate_votes2 or candidate_votes0 > candidate_votes3:
+    if candidate_votes0 > candidate_votes1 and candidate_votes0 > candidate_votes2 and candidate_votes0 > candidate_votes3:
         winner = candidates[0]
         print(f'Winner: {winner}')
-    elif candidate_votes1 > candidate_votes0 or candidate_votes1 > candidate_votes2 or candidate_votes1 > candidate_votes3:
+    elif candidate_votes1 > candidate_votes0 and candidate_votes1 > candidate_votes2 and candidate_votes1 > candidate_votes3:
         winner = candidates[1]
         print(f'Winner: {winner}')
-    elif candidate_votes2 > candidate_votes0 or candidate_votes2 > candidate_votes1 or candidate_votes2 > candidate_votes3:
+    elif candidate_votes2 > candidate_votes0 and candidate_votes2 > candidate_votes1 and candidate_votes2 > candidate_votes3:
         winner = candidates[2]
         print(f'Winner: {winner}')
     else:
